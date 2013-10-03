@@ -66,6 +66,8 @@ namespace RusticiSoftware.TinCanAPILibrary
             {
                 switch (version)
                 {
+                    case TCAPIVersion.TinCan1p0p0:
+                        return "1.0.0";
                     case TCAPIVersion.TinCan095:
                         return "0.95";
                     default:
@@ -249,6 +251,10 @@ namespace RusticiSoftware.TinCanAPILibrary
             version = whc["X-Experience-API-Version"];
             if (string.IsNullOrEmpty(version))
             {
+            }
+            else if (version.Equals("1.0") || version.Equals("1.0.0"))
+            {
+                return TCAPIVersion.TinCan1p0p0;
             }
             else if (version.Equals("0.95") || version.Equals(".95"))
             {
@@ -1109,7 +1115,7 @@ namespace RusticiSoftware.TinCanAPILibrary
             StatementQueryObject qo = new StatementQueryObject();
             qo.Limit = 1;
             NameValueCollection nvc = qo.ToNameValueCollection(version);
-            HttpMethods.GetRequest(nvc, endpoint + STATEMENTS, authentification, out whc, "0.95");
+            HttpMethods.GetRequest(nvc, endpoint + STATEMENTS, authentification, out whc, "1.0.0");
             return whc;
         }
 
