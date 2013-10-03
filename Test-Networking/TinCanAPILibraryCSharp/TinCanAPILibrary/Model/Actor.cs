@@ -80,12 +80,12 @@ namespace RusticiSoftware.TinCanAPILibrary.Model
                             "Mbox value " + normalized + " must begin with mailto: prefix",
                             "value");
                     }
-                    if (!ValidationHelper.IsValidEmailAddress(normalized.Substring(mboxPrefix.Length)))
+                    /*if (!ValidationHelper.IsValidEmailAddress(normalized.Substring(mboxPrefix.Length)))
                     {
                         throw new ArgumentException(
                             "Mbox value " + normalized + " is not a valid email address.",
                             "value");
-                    }
+                    }*/
                 }
                 mbox = normalized;
             }
